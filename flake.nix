@@ -30,6 +30,15 @@
 
         glibc = if pkgs.stdenv.isx86_64 then pkgs.glibc_multi else pkgs.glibc;
         self = {
+          packages.nix-scope = pkgs.rustPlatform.buildRustPackage {
+            pname = "nix-scope";
+            version = "0.1.0";
+
+            src = ./.;
+            cargoLock.lockFile = ./Cargo.lock;
+          };
+          packages.default = self.packages.nix-scope;
+
           devShells.default = self.devShells.rustup-dev;
 
           devShells.rustup-dev = pkgs.stdenv.mkDerivation {
