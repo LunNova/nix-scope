@@ -9,7 +9,7 @@ path = "src.rs"
 
 [dependencies]
 argh = "0.1.10"
-termion = "1.5"
+termion = "4.0"
 users = "0.11"
 nix = "0.25"
 
